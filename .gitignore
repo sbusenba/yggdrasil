@@ -7,6 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+octokit.js
 fb_config.js
 node_modules
 dist
