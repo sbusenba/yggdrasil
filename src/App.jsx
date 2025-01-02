@@ -1,9 +1,23 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import yggdrasilLogo from '/src/assets/512x512.png'
 import './App.css'
+import {request} from '@octokit/request';
+
+
 
 function App() {
   const [count, setCount] = useState(0)
+  const [commitData, setCommitData] = useState([])
+  
+
+  useEffect(()=>{
+    request('GET /repos/{owner}/{repo}/commits/', {
+      owner: 'sbusenba',
+      repo: 'yggdrasil',
+      headers: {
+        'X-GitHub-Api-Version': '2022-11-28'
+      }}).then(response => setCommitData(response.data))
+    },[])
 
   return (
     <>
@@ -19,7 +33,7 @@ function App() {
           count is {count}
         </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          commits: {commitData.length}
         </p>
       </div>
       <p className="read-the-docs">
