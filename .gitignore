@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 octokit.js
-githubcreds.js
+githubCreds.js
 fb_config.js
 node_modules
 dist
